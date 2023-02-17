@@ -1,0 +1,3 @@
+STATO = 0
+MAXX = 256
+MAXY = 144
