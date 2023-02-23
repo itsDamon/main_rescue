@@ -54,13 +54,13 @@ if __name__ == '__main__':
                     print(verde)
                     sleep(5)
                     if verde == 0:
-                        stop(ser)
+                        curva180(ser)
                         print("vstop")
                     if verde == 1:  # gira a destra
-                        Sdestra(ser)
+                        destra90(ser)
                         print("Vdestra")
                     elif verde == 2:  # gira a sinstra
-                        Ssinistra(ser)
+                        sinistra90(ser)
                         print("Vsinistra")
                     # break
                     checkVerde = False
@@ -80,5 +80,7 @@ if __name__ == '__main__':
                 avanti(ser)
                 print("avanti")
 
-    camera.close()
-    cv2.destroyAllWindows()
+'''
+camera.close()
+cv2.destroyAllWindows()
+'''
