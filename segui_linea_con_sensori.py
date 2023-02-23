@@ -1,14 +1,11 @@
 from time import sleep
 
 import cv2
-import serial
 from picamera2 import Picamera2
 
-from trovaVerdeLib import *
 from variabiliGlobali import *
 
 
-ser = serial.Serial("/dev/ttyACM0", 9600)  # set porta seriale
 
 dim = int(MAXX / 100 * 22)  # dimensione aree nere
 

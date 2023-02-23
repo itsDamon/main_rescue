@@ -1,7 +1,11 @@
 import RPi.GPIO as GPIO
+import serial
 
 from muoviMotoriLib import *
 from segui_linea_con_sensori import *
+from nuovoTrovaVerdeLib import *
+
+ser = serial.Serial("/dev/ttyACM0", 9600)  # set porta seriale
 
 # set pin
 pinReset = 27  # pin 13 D3
@@ -49,7 +53,7 @@ if __name__ == '__main__':
                 print(verde)
                 if verde:
                     stop(ser)
-                    verde = trova_Verde(im)
+                    verde = trovaVerde(im)
                     print("curvaVerde")
                     print(verde)
                     sleep(5)
