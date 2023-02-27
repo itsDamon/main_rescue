@@ -5,8 +5,6 @@ from picamera2 import Picamera2
 
 from variabiliGlobali import *
 
-
-
 dim = int(MAXX / 100 * 22)  # dimensione aree nere
 
 cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
