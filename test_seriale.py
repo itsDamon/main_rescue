@@ -16,6 +16,8 @@ except:
         test1 = serial.Serial("/dev/ttyACM2", 9600)
         startpoint += 1
 
+print(test1)
+
 try:
     test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
 except:
