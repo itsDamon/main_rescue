@@ -14,30 +14,26 @@ except:
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(0.3)
-for _ in range(n):
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(0.3)
 
 print("retro")
 accendiTofRetro(sensori)
 sleep(0.3)
-for _ in range(n):
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(0.3)
 
 print("sinistra")
 accendiUltrasuoniSinistra(sensori)
 sleep(0.3)
-for _ in range(n):
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(0.3)
 
 print("destra")
 accendiUltrasuoniDestra(sensori)
 sleep(0.3)
-for _ in range(n):
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
