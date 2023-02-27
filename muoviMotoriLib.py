@@ -1,5 +1,6 @@
 n = 10
 
+
 def avanti(ser):
     for _ in range(n):
         ser.write(b'a')
@@ -49,9 +50,8 @@ def curva180(ser):
     for _ in range(n):
         ser.write(b'T')
 
+
 def check(ser):
     for _ in range(n):
         ser.write(b'?')
     return ser.readline()
-
-

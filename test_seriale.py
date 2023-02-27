@@ -16,17 +16,20 @@ except:
         test1 = serial.Serial("/dev/ttyACM2", 9600)
         startpoint += 1
 
-for startpoint in range(3):
+try:
+    test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
+except:
+    startpoint += 1
     try:
         test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
-        break
     except:
-        print("cercando")
-        if startpoint != 3:
-            continue
-    print("errore")
-    raise RuntimeError("a zi non c'è il seriale")
+        startpoint += 1
+        try:
+            test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
+        except:
+            test2 = "null"
 
+print(test2)
 if check(test1) == 'y':
     motori = test1
     sensori = test2
