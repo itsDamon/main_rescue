@@ -11,6 +11,9 @@ except:
         sensori = serial.Serial("/dev/ttyACM2", 9600)
 
 # test sensori
+for _ in range(10):
+    print(sensori.readline())
+'''
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(0.3)
@@ -37,3 +40,4 @@ accendiUltrasuoniDestra(sensori)
 sleep(0.3)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
+'''
