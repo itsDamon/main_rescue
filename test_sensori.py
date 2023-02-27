@@ -18,20 +18,20 @@ sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
-'''
 
 print("retro")
 accendiTofRetro(sensori)
 sleep(1)
-while True:
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
+'''
 
 print("sinistra")
 accendiUltrasuoniSinistra(sensori)
 sleep(1)
-print(sensori.readline())
+while True:
+    print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
 
