@@ -20,17 +20,23 @@ print(test1)
 
 try:
     print("testing: ", startpoint)
-    test2 = serial.Serial(f"/dev/tty/ACM" + str(startpoint))
+    string = "/dev/tty/ACM" + str(startpoint)
+    print(string)
+    test2 = serial.Serial(string)
 except:
     startpoint += 1
     try:
         print("testing: ", startpoint)
-        test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
+        string = "/dev/tty/ACM" + str(startpoint)
+        print(string)
+        test2 = serial.Serial(string)
     except:
         startpoint += 1
         try:
             print("testing: ", startpoint)
-            test2 = serial.Serial("/dev/tty/ACM" + str(startpoint))
+            string = "/dev/tty/ACM" + str(startpoint)
+            print(string)
+            test2 = serial.Serial(string)
         except:
             test2 = "null"
 
