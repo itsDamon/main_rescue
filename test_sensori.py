@@ -11,11 +11,12 @@ except:
         sensori = serial.Serial("/dev/ttyACM2", 9600)
 
 # test sensori
-'''
+
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
-print(sensori.readline())
+while True:
+    print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
 
@@ -32,11 +33,10 @@ sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
-'''
+
 
 print("destra")
 accendiUltrasuoniDestra(sensori)
 sleep(1)
-while True:
-    print(sensori.readline())
+print(sensori.readline())
 spegniSensoreInUso(sensori)
