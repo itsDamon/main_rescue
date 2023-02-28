@@ -115,3 +115,24 @@ def assegnaDirezione(originale, ymin, ymax):
 
 direzione = 3
 checkVerde = False
+
+
+def findAreaNera(img):
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    (T, nero) = cv2.threshold(gray, 40, 255, cv2.THRESH_BINARY_INV)
+    cv2.imshow("Threshold", nero)
+    cnts = cv2.findContours(nero.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts)
+
+    if len(cnts) != 0:
+        c = max(cnts, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(c)
+        cx = (x + (w // 2))  # trova il punto medio
+        area = w * h
+        print(area)
+
+        cy = (y + (h // 2))
+
+        if area > 200:
+            return True
+    return False

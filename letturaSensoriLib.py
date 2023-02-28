@@ -1,3 +1,5 @@
+from time import sleep
+
 n = 10
 
 
@@ -23,4 +25,5 @@ def accendiUltrasuoniDestra(ser):
 
 def spegniSensoreInUso(ser):
     for _ in range(n):
+        sleep(0.2)
         ser.write(b'0')
