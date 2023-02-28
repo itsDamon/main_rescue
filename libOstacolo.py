@@ -13,7 +13,7 @@ def ostacolo(cam, mot, sens):
         x = 0
         while x == 0:
             accendiUltrasuoniSinistra(sens)
-            x = str(sens.readLine()).strip().replace('\'', "")
+            x = str(sens.readLine()).strip().replace('\\PL', "")
             print(x)
             avanti(mot)
             sleep(0.1)
@@ -25,7 +25,7 @@ def ostacolo(cam, mot, sens):
                 controllo = 1
                 break
             accendiUltrasuoniSinistra(sens)
-            x = str(sens.readLine()).strip().replace('\'', "")
+            x = str(sens.readLine()).strip().replace('\\PL', "")
             print(x)
             avanti(mot)
             sleep(0.1)

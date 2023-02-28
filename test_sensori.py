@@ -1,6 +1,17 @@
+import cv2
 import serial
+from picamera2 import Picamera2
+from variabiliGlobali import *
 from letturaSensoriLib import *
 from time import sleep
+
+cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
+camera = Picamera2()  # assegna la videocamera e assegna il video a camera
+camera.configure(
+    camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
+camera.set_controls({"ExposureTime": 13000, "AnalogueGain": 1.0})  # controllo esposizione
+camera.start()  # avvia la videocamera
+sleep(2)  # pausa 2s
 
 try:
     sensori = serial.Serial("/dev/ttyACM0", 9600)
@@ -12,6 +23,8 @@ except:
 
 # test sensori
 
+
+'''
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
@@ -40,3 +53,4 @@ accendiUltrasuoniDestra(sensori)
 sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
+'''

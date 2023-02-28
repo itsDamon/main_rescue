@@ -4,7 +4,7 @@ from letturaSensoriLib import *
 from time import sleep
 
 startpoint = 0
-
+'''
 try:
     test1 = serial.Serial("/dev/ttyACM0", 9600)
     startpoint += 1
@@ -33,7 +33,10 @@ except:
             test2 = serial.Serial("/dev/tty/ACM" + str(startpoint), 9600)
         except:
             test2 = "null"
-
+'''
+test1 = serial.Serial("/dev/ttyACM0", 9600)
+test2 = serial.Serial("/dev/ttyACM1", 9600)
+print(test1)
 print(test2)
 if check(test1) == 'y':
     motori = test1
