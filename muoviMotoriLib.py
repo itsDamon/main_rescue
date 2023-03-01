@@ -54,4 +54,4 @@ def curva180(ser):
 def check(ser):
     for _ in range(n):
         ser.write(b'?')
-    return ser.readline()
+    return str(ser.readline()).strip().replace("\\PL", "")

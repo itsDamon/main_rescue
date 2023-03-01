@@ -13,6 +13,11 @@ camera.set_controls({"ExposureTime": 13000, "AnalogueGain": 1.0})  # controllo e
 camera.start()  # avvia la videocamera
 sleep(2)  # pausa 2s
 
+'''test jos
+camera.controls.Brightness = 0
+camera.controls.AeEnable = False
+'''
+
 try:
     sensori = serial.Serial("/dev/ttyACM0", 9600)
 except:
