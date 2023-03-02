@@ -13,22 +13,22 @@ def stop(ser):
 
 def destra(ser):
     for _ in range(n):
-        ser.write(b'D')
+        ser.write(b'd')
 
 
 def Sdestra(ser):
     for _ in range(n):
-        ser.write(b'd')
+        ser.write(b'D')
 
 
 def sinistra(ser):
     for _ in range(n):
-        ser.write(b'S')
+        ser.write(b's')
 
 
 def Ssinistra(ser):
     for _ in range(n):
-        ser.write(b's')
+        ser.write(b'S')
 
 
 def retro(ser):

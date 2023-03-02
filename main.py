@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import serial
 
 from muoviMotoriLib import *
-from segui_linea_con_sensori import *
 from nuovoTrovaVerdeLib import *
+from segui_linea_con_sensori import *
 
 ser = serial.Serial("/dev/ttyACM0", 9600)  # set porta seriale
 
