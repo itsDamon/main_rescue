@@ -18,9 +18,6 @@ def findAreaNera(img):
         cx = (x + (w // 2))  # trova il punto medio
         area = w * h
         print(area)
-
-        cy = (y + (h // 2))
-
         if area > 200:
             return True
     return False
