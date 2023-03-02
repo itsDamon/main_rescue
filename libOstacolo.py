@@ -1,7 +1,8 @@
 import imutils
+import cv2
 
 from muoviMotoriLib import *
-from test_sensori import *
+from letturaSensoriLib import *
 
 
 def findAreaNera(img):
@@ -45,10 +46,10 @@ def ostacolo(cam, mot, sens):
         spegniSensoreInUso(sens)
         while x == '1':
             svuota(sens)
-            '''im = cam.capture_array()
+            im = cam.capture_array()
             if findAreaNera(im):
                 controllo = 1
-                break'''
+                break
             accendiUltrasuoniSinistra(sens)
             # x = str(sens.readLine()).strip().replace('\\PL', "")
             x = str(sens.readLine())[2:3]

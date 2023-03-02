@@ -12,7 +12,7 @@ except:
 
 # test sensori
 
-
+''''''
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
