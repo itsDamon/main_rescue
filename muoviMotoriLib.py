@@ -1,3 +1,4 @@
+from time import sleep
 n = 10
 
 
@@ -54,4 +55,9 @@ def curva180(ser):
 def check(ser):
     for _ in range(n):
         ser.write(b'?')
-    return str(ser.readline()).strip().replace("\\PL", "")
+    sleep(0.3)    
+    x = str( sensori.readline())[2:3]
+    for lettera in x:
+        if lettera == 'y':
+            return True
+    return False
