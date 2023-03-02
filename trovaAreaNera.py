@@ -1,10 +1,8 @@
-from picamera.array import PiRGBArray
-from picamera2 import Picamera2, Preview
-import imutils
-import cv2
-import numpy as np
 import time
 
+import cv2
+import imutils
+from picamera2 import Picamera2
 
 MAXX=256
 MAXY=144

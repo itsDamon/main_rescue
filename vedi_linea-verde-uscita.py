@@ -1,10 +1,9 @@
-from picamera.array import PiRGBArray
-from picamera2 import Picamera2, Preview
-import cv2
-import numpy as np
-import imutils
-import serial
 import time
+
+import cv2
+import imutils
+import numpy as np
+from picamera2 import Picamera2
 
 light_green = np.array([36,50,50])
 dark_green = np.array([85,255,255])

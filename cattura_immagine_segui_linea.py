@@ -95,12 +95,12 @@ while True:
     direzione = findBordi(mask,100,MAXY-10)  #ritorna la direnzione in cui è il robot e la assegna a direnzione
     if not checkVerde:
         imV = im[100:MAXY, 20:MAXX//2-20]
-        checkVerde = isverde(im)
+        checkVerde = isVerde(im)
         #print(f"verde {hverde}")
     else:
         imV = im[100:MAXY, 20:MAXX-20]
         cv2.imshow("verde",imV)
-        verde = isverde(imV)
+        verde = isVerde(imV)
         print(verde)
         if verde:
             verde = trova_Verde(im)
