@@ -12,7 +12,6 @@ except:
 
 # test sensori
 
-''''''
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
@@ -34,7 +33,6 @@ sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
-
 
 print("destra")
 accendiUltrasuoniDestra(sensori)

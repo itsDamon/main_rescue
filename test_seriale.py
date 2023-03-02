@@ -1,4 +1,3 @@
-import cv2
 from picamera2 import Picamera2
 
 from libOstacolo import *
@@ -29,7 +28,7 @@ else:
 
 # test motori
 print(motori)
-ostacolo(camera,motori,sensori)
+ostacolo(camera, motori, sensori)
 while True:
     avanti(motori)
     sleep(1)
