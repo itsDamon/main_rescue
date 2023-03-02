@@ -1,11 +1,6 @@
-import serial
-from muoviMotoriLib import *
-from letturaSensoriLib import *
-from time import sleep
-from picamera2 import Picamera2, Preview
 import cv2
-import numpy as np
-import imutils
+from picamera2 import Picamera2
+
 from libOstacolo import *
 
 MAXX = 256
