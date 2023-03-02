@@ -2,10 +2,12 @@ from time import sleep
 
 n = 10
 
+
 def svuota(ser):
-     ser.flushInput()
-     ser.flushOutput()
-     
+    ser.flushInput()
+    ser.flushOutput()
+
+
 def accendiTofFrontale(ser):
     for _ in range(n):
         ser.write(b'f')

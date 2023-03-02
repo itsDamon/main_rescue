@@ -1,9 +1,6 @@
-import cv2
 import serial
-from picamera2 import Picamera2
-from variabiliGlobali import *
+
 from letturaSensoriLib import *
-from time import sleep
 
 try:
     sensori = serial.Serial("/dev/ttyACM0", 9600)
@@ -15,7 +12,7 @@ except:
 
 # test sensori
 
-'''
+
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
@@ -44,4 +41,3 @@ accendiUltrasuoniDestra(sensori)
 sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
-'''

@@ -1,5 +1,7 @@
-from test_sensori import *
+import imutils
+
 from muoviMotoriLib import *
+from test_sensori import *
 
 
 def findAreaNera(img):
@@ -22,6 +24,7 @@ def findAreaNera(img):
             return True
     return False
 
+
 def ostacolo(cam, mot, sens):
     retro(mot)
     sleep(0.5)
@@ -33,7 +36,7 @@ def ostacolo(cam, mot, sens):
         while x == '0':
             svuota(sens)
             accendiUltrasuoniSinistra(sens)
-            #x = str(sens.readLine()).strip().replace('\\PL', "")
+            # x = str(sens.readLine()).strip().replace('\\PL', "")
             x = str(sens.readLine())[2:3]
             print(x)
             avanti(mot)
@@ -47,7 +50,7 @@ def ostacolo(cam, mot, sens):
                 controllo = 1
                 break'''
             accendiUltrasuoniSinistra(sens)
-            #x = str(sens.readLine()).strip().replace('\\PL', "")
+            # x = str(sens.readLine()).strip().replace('\\PL', "")
             x = str(sens.readLine())[2:3]
             print(x)
             avanti(mot)

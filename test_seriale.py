@@ -8,14 +8,15 @@ import numpy as np
 import imutils
 from libOstacolo import *
 
-MAXX=256
-MAXY=144
-cv2.startWindowThread()   #permette l'aggiornamento di cv2.imshow()
-camera = Picamera2()      #assegna la videocamera e assegna il video a camera
-camera.configure(camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)})) #configura la videocamera
+MAXX = 256
+MAXY = 144
+cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
+camera = Picamera2()  # assegna la videocamera e assegna il video a camera
+camera.configure(
+    camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
 camera.controls.Brightness = 0
-camera.set_controls({"ExposureTime": 30000, "AnalogueGain": 1.0}) # controllo esposizione
-camera.start()            #avvia la videocamer
+camera.set_controls({"ExposureTime": 30000, "AnalogueGain": 1.0})  # controllo esposizione
+camera.start()  # avvia la videocamer
 sleep(2)
 
 test1 = serial.Serial("/dev/ttyACM0", 9600)
@@ -25,8 +26,8 @@ print(test2)
 print("fine")
 x = check(test1)
 y = check(test2)
-print(x ,"fad")
-print(y,"das")
+print(x, "fad")
+print(y, "das")
 
 print("lon")
 if check(test1) == 'y':
@@ -43,24 +44,19 @@ else:
 # test motori
 print(motori)
 print("kloe")
-avanti(motori)
-sleep(1)
-stop(motori)
-destra(motori)
-sleep(1)
-sinistra(motori)
-sleep(1)
-retro(motori)
-sleep(1)
-stop(motori)
+while True:
+    avanti(motori)
+    sleep(1)
+    stop(motori)
+    sleep(10)
 
-#test sensori
+# test sensori
 
 svuota(sensori)
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(0.3)
-print("qui: ", str( sensori.readline())[2:3])
+print("qui: ", str(sensori.readline())[2:3])
 spegniSensoreInUso(sensori)
 sleep(0.3)
 
@@ -87,4 +83,4 @@ sleep(0.3)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
 
-ostacolo(camera,motori,sensori)
+ostacolo(camera, motori, sensori)
