@@ -32,3 +32,14 @@ def spegniSensoreInUso(ser):
     for _ in range(n):
         sleep(0.2)
         ser.write(b'0')
+
+
+def check(ser):
+    for _ in range(n):
+        ser.write(b'?')
+    sleep(0.3)
+    x = str(ser.readline())[2:3]
+    for lettera in x:
+        if lettera == 'y':
+            return True
+    return False

@@ -1,4 +1,3 @@
-from time import sleep
 n = 10
 
 
@@ -50,14 +49,3 @@ def sinistra90(ser):
 def curva180(ser):
     for _ in range(n):
         ser.write(b'T')
-
-
-def check(ser):
-    for _ in range(n):
-        ser.write(b'?')
-    sleep(0.3)    
-    x = str( sensori.readline())[2:3]
-    for lettera in x:
-        if lettera == 'y':
-            return True
-    return False

@@ -18,27 +18,17 @@ test1 = serial.Serial("/dev/ttyACM0", 9600)
 test2 = serial.Serial("/dev/ttyACM1", 9600)
 print(test1)
 print(test2)
-print("fine")
 x = check(test1)
-y = check(test2)
-print(x, "fad")
-print(y, "das")
 
-print("lon")
-if check(test1) == 'y':
-    print("dsaD")
+if x:
     motori = test1
     sensori = test2
-    print(" neo")
 else:
-    print("da")
     motori = test2
     sensori = test1
-    print("dsa")
 
 # test motori
 print(motori)
-print("kloe")
 while True:
     avanti(motori)
     sleep(1)
