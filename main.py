@@ -30,7 +30,7 @@ GPIO.setup(pinReset, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # variabili
 direzione = 3
 checkVerde = False
-STATO = 0
+STATO = 1
 
 
 def reset():
