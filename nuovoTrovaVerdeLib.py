@@ -61,7 +61,6 @@ def isNero(crop):
     for i in range(len(crop)):
         for j in range(len(crop)):
             pixel = crop[0:0]
-            print(pixel)
             if pixel == 255:
                 count += 1
     return count >= ((len(crop) * len(crop)) // 4) * 3
@@ -75,6 +74,8 @@ def nero(img, x, y, w, h):
     cy = y + (h // 2)
 
     sopra = img[y - 5:y - 1, cx - 3:cx + 3]
+    pixel = sopra[0:0]
+    print(pixel)
     sotto = img[y + h + 1:y + h + 5, cx - 3:cx + 3]
     destra = img[cy - 5:cy, x + w + 1:x + w + 5]
     sinistra = img[cy - 5:cy, x - 5: x - 1]
