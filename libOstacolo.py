@@ -67,6 +67,6 @@ def ostacolo(mot, sens):
         spegniSensoreInUso(sens)
         print("fine pieno")
         destra90(mot)
-        sleep(1)
         svuota(mot)
         stop(mot)
+        sleep(5)
