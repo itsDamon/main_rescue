@@ -29,7 +29,7 @@ else:
 # test motori
 print("l")
 print(motori)
-ostacolo(camera, motori, sensori)
+ostacolo(motori, sensori)
 while True:
     avanti(motori)
     sleep(1)
