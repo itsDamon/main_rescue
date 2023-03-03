@@ -2,16 +2,10 @@ import serial
 
 from letturaSensoriLib import *
 
-try:
-    sensori = serial.Serial("/dev/ttyACM0", 9600)
-except:
-    try:
-        sensori = serial.Serial("/dev/ttyACM1", 9600)
-    except:
-        sensori = serial.Serial("/dev/ttyACM2", 9600)
+sensori = serial.Serial("/dev/ttyACM1", 9600)
 
 # test sensori
-
+'''
 print("avanti")
 accendiTofFrontale(sensori)
 sleep(1)
@@ -26,15 +20,18 @@ sleep(1)
 print(sensori.readline())
 spegniSensoreInUso(sensori)
 sleep(1)
-
+'''
 print("sinistra")
+svuota(sensori)
 accendiUltrasuoniSinistra(sensori)
 sleep(1)
-print(sensori.readline())
+while True:
+    print(sensori.read_until())
 spegniSensoreInUso(sensori)
-sleep(1)
+
 
 print("destra")
+svuota(sensori)
 accendiUltrasuoniDestra(sensori)
 sleep(1)
 print(sensori.readline())

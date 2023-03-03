@@ -6,6 +6,7 @@ n = 10
 def svuota(ser):
     ser.flushInput()
     ser.flushOutput()
+    ser.flush()
 
 
 def accendiTofFrontale(ser):
@@ -35,10 +36,13 @@ def spegniSensoreInUso(ser):
 
 
 def check(ser):
+    print("lon")
+    svuota(ser)
     for _ in range(n):
         ser.write(b'?')
     sleep(0.3)
-    x = str(ser.readline())[2:3]
+    x = str(ser.read_until())[2:3]
+    print(x)
     for lettera in x:
         if lettera == 'y':
             return True

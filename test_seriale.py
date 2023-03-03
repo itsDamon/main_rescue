@@ -27,13 +27,20 @@ else:
     sensori = test1
 
 # test motori
+print("l")
 print(motori)
 ostacolo(camera, motori, sensori)
 while True:
     avanti(motori)
     sleep(1)
+    retro(motori)
+    sleep(1)
     stop(motori)
-    sleep(10)
+    sleep(1)
+    destra(motori)
+    sleep(1)
+    sinistra(motori)
+    sleep(1)
 
 # test sensori
 

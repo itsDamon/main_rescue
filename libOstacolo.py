@@ -22,37 +22,42 @@ def findAreaNera(img):
             return True
     return False
 
-
 def ostacolo(cam, mot, sens):
-    retro(mot)
-    sleep(0.5)
+    #retro(mot)
+    #sleep(0.5)
     stop(mot)
-    sinistra90(mot)
+    sleep(5)
+    #sinistra90(mot)
     controllo = 0
     while controllo != 1:
         x = '0'
-        while x == '0':
+        while True:
             svuota(sens)
-            accendiUltrasuoniSinistra(sens)
-            # x = str(sens.readLine()).strip().replace('\\PL', "")
-            x = str(sens.readLine())[2:3]
+            accendiUltrasuoniDestra(sens)
+            x = str(sens.read_until())[2:3]
             print(x)
+            if x == '1':
+                break
             avanti(mot)
-            sleep(0.1)
+            sleep(0.5)
             stop(mot)
         spegniSensoreInUso(sens)
-        while x == '1':
-            svuota(sens)
+        print("fine vuoto")
+        while True:
+            '''
             im = cam.capture_array()
             if findAreaNera(im):
                 controllo = 1
-                break
-            accendiUltrasuoniSinistra(sens)
-            # x = str(sens.readLine()).strip().replace('\\PL', "")
-            x = str(sens.readLine())[2:3]
+                break'''
+            svuota(sens)
+            accendiUltrasuoniDestra(sens)
+            x = str(sens.read_until())[2:3]
             print(x)
+            if x == '0' :
+                break
             avanti(mot)
-            sleep(0.1)
+            sleep(0.5)
             stop(mot)
-
+        print("fine pieno")
         destra90(mot)
+        sleep(10)
