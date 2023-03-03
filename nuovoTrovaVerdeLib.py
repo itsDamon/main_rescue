@@ -71,6 +71,7 @@ def nero(img, x, y, w, h):
     (T, threshed) = cv2.threshold(gray, 40, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
     threshed = cv2.erode(threshed, None, iterations=3)
     copy = threshed.copy()
+    print("x = " + str(x) + " y = "+ str(y) +" w = " +str(w)+" h = "+ str(h))
     cv2.rectangle(copy, (x, x+w), (y, y+h), (255, 0, 0))
     cv2.imshow("verde", copy)  # la mostra a video
     cx = x + (w // 2)
