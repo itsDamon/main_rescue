@@ -60,7 +60,7 @@ def isNero(crop):
     count = 0
     for i in range(len(crop)):
         for j in range(len(crop)):
-            pixel = pixel[i:j]
+            pixel = crop[i:j]
             if pixel == 255:
                 count += 1
     return count >= ((len(crop) * len(crop)) // 4) * 3
