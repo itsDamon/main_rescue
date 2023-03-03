@@ -24,7 +24,7 @@ def findAreaNera(img):
 
 
 def ostacolo(mot, sens):
-    cam = cv2.VideoCapture(0)
+    cam = cv2.VideoCapture(1)
     cam.set(3, 640)
     cam.set(4, 480)
     if not cam.isOpened():
