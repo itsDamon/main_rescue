@@ -72,7 +72,7 @@ def nero(img, x, y, w, h):
     threshed = cv2.erode(threshed, None, iterations=3)
     copy = threshed.copy()
     print("x = " + str(x) + " y = "+ str(y) +" w = " +str(w)+" h = "+ str(h))
-    cv2.rectangle(copy, (x, x+w), (y, y+h), (255, 0, 0))
+    cv2.rectangle(copy, (x+w, x), (y+h, y), (255, 0, 0))
     cv2.imshow("verde", copy)  # la mostra a video
     cx = x + (w // 2)
     cy = y + (h // 2)
