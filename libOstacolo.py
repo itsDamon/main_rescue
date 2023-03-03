@@ -40,8 +40,9 @@ def ostacolo(cam, mot, sens):
             if x == '1':
                 break
             avanti(mot)
-            sleep(0.1)
+            sleep(0.15)
             stop(mot)
+            sleep(0.05)
         spegniSensoreInUso(sens)
         print("fine vuoto")
         while True:
@@ -57,7 +58,8 @@ def ostacolo(cam, mot, sens):
             if x == '0':
                 break
             avanti(mot)
-            sleep(0.1)
+            sleep(0.15)
             stop(mot)
+            sleep(0.05)
         print("fine pieno")
         destra90(mot)
