@@ -23,8 +23,8 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
     (T, threshed) = cv2.threshold(gray, 40, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
     threshed = cv2.erode(threshed, None, iterations=3)
     copy = threshed.copy()
-    cv2.rectangle(copy, (MAXX - 30 - dim, 100), (MAXX - 30, MAXY - 10), (255, 0, 0))
-    cv2.rectangle(copy, (30, 100), (dim + 30, MAXY - 10), (255, 0, 0))
+    cv2.rectangle(copy, (MAXX - offset - dim, 100), (MAXX - offset, MAXY - 10), (255, 0, 0))
+    cv2.rectangle(copy, (offset, 100), (dim + offset, MAXY - 10), (255, 0, 0))
     cv2.imshow("Tresh", copy)  # la mostra a video
     return threshed
 
@@ -70,7 +70,7 @@ def incrocio(originale, ymin, ymax):
 
 
 def check_sinistra(originale, ymin, ymax):
-    mask = originale[ymin:ymax, 30:dim + 30]
+    mask = originale[ymin:ymax, offset:dim + offset]
     cv2.imshow("sinistra", mask)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
@@ -86,7 +86,7 @@ def check_sinistra(originale, ymin, ymax):
 
 
 def check_destra(originale, ymin, ymax):
-    mask = originale[ymin:ymax, MAXX - 30 - dim:MAXX - 30]
+    mask = originale[ymin:ymax, MAXX - offset - dim:MAXX - offset]
     cv2.imshow("destra", mask)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
@@ -117,4 +117,3 @@ def assegnaDirezione(originale, ymin, ymax):
 
 direzione = 3
 checkVerde = False
-

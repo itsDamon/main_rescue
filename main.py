@@ -1,11 +1,10 @@
 import RPi.GPIO as GPIO
 import serial
 
+from libOstacolo import check
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLib import *
 from segui_linea_con_sensori import *
-from libOstacolo import check
-
 
 test1 = serial.Serial("/dev/ttyACM0", 9600)
 test2 = serial.Serial("/dev/ttyACM1", 9600)
@@ -51,8 +50,8 @@ if __name__ == '__main__':
             im = camera.capture_array()
             # im = cv2.flip(im, 0) #decommentare in caso che la videocamera è al contrario
             copia = im.copy()
-            cv2.rectangle(copia, (MAXX - 30 - dim, 100), (MAXX - 30, MAXY - 10), (255, 0, 0))
-            cv2.rectangle(copia, (30, 100), (dim + 30, MAXY - 10), (255, 0, 0))
+            cv2.rectangle(copia, (MAXX - offset - dim, 100), (MAXX - offset, MAXY - 10), (255, 0, 0))
+            cv2.rectangle(copia, (offset, 100), (dim + offset, MAXY - 10), (255, 0, 0))
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
             if not checkVerde:
