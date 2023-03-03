@@ -4,8 +4,21 @@ import serial
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLib import *
 from segui_linea_con_sensori import *
+from libOstacolo import check
 
-ser = serial.Serial("/dev/ttyACM0", 9600)  # set porta seriale
+
+test1 = serial.Serial("/dev/ttyACM0", 9600)
+test2 = serial.Serial("/dev/ttyACM1", 9600)
+print(test1)
+print(test2)
+x = check(test1)
+
+if x:
+    motori = test1
+    sensori = test2
+else:
+    motori = test2
+    sensori = test1
 
 # set pin
 pinReset = 27  # pin 13 D3
@@ -32,7 +45,7 @@ GPIO.add_event_detect(pinReset, GPIO.FALLING, callback=reset, bouncetime=100)
 if __name__ == '__main__':
     while True:
         if STATO == 0:
-            stop(ser)
+            stop(motori)
         elif STATO == 1:
             # Prende immagini dalla cam e le mostra a ogni iterazione del ciclo
             im = camera.capture_array()
@@ -52,19 +65,19 @@ if __name__ == '__main__':
                 verde = isverde(imV)
                 print(verde)
                 if verde:
-                    stop(ser)
+                    stop(motori)
                     verde = trovaVerde(im)
                     print("curvaVerde")
                     print(verde)
                     sleep(5)
                     if verde == 0:
-                        curva180(ser)
+                        curva180(motori)
                         print("vstop")
                     if verde == 1:  # gira a destra
-                        destra90(ser)
+                        destra90(motori)
                         print("Vdestra")
                     elif verde == 2:  # gira a sinstra
-                        sinistra90(ser)
+                        sinistra90(motori)
                         print("Vsinistra")
                     # break
                     checkVerde = False
@@ -72,16 +85,16 @@ if __name__ == '__main__':
             mask = filtro(im)  # chiama la funione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, 100, MAXY - 10)
             # print(direzione)
-            stop(ser)
+            stop(motori)
             sleep(0.01)
             if direzione == 1:  # gira a destra
-                destra(ser)
+                destra(motori)
                 print("destra")
             elif direzione == 2:  # gira a sinstra
-                sinistra(ser)
+                sinistra(motori)
                 print("sinistra")
             elif direzione == 3:  # vai dritto
-                avanti(ser)
+                avanti(motori)
                 print("avanti")
 
 '''
