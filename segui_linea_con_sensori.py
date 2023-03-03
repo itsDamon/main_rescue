@@ -6,7 +6,7 @@ from picamera2 import Picamera2
 
 from variabiliGlobali import *
 
-dim = int(MAXX / 100 * 24)  # dimensione aree nere
+dim = int(MAXX / 100 * 27)  # dimensione aree nere
 
 cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
 camera = Picamera2()  # assegna la videocamera e assegna il video a camera
