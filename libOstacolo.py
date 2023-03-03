@@ -64,3 +64,5 @@ def ostacolo(cam, mot, sens):
         print("fine pieno")
         destra90(mot)
         sleep(1)
+        svuota(mot)
+        stop(mot)
