@@ -68,6 +68,7 @@ def isNero(crop):
 
 def nero(img, x, y, w, h):
     cv2.imshow("VERDE",img)
+
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # converte l'immagine da bgr a grayscale
     (T, threshed) = cv2.threshold(gray, 40, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
     threshed = cv2.erode(threshed, None, iterations=3)
