@@ -57,10 +57,12 @@ def trovaVerde(img):
 
 
 def isNero(crop):
-    for pixel in crop:
-        if pixel != 255:
-            return False
-    return True
+    count = 0
+    for line in crop:
+        for pixel in line:
+            if pixel == 255:
+                count += 1
+    return count >= ((len(crop) * len(crop)) // 4) * 3
 
 
 def nero(img, x, y, w, h):
