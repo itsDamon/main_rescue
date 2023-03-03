@@ -1,5 +1,6 @@
-from picamera2 import Picamera2
 import serial
+from picamera2 import Picamera2
+
 from libOstacolo import *
 
 MAXX = 256
@@ -9,7 +10,7 @@ camera = Picamera2()  # assegna la videocamera e assegna il video a camera
 camera.configure(
     camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
 camera.controls.Brightness = 0
-camera.set_controls({"ExposureTime": 30000, "AnalogueGain": 1.0})  # controllo esposizione
+camera.set_controls({"ExposureTime": 30000, "AnalogueGain": 1.0, "AeEnable": 0})  # controllo esposizione
 camera.start()  # avvia la videocamer
 sleep(2)
 
