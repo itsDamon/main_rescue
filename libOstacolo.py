@@ -33,7 +33,6 @@ def ostacolo(cam, mot, sens):
     while controllo != 1:
         x = '0'
         while True:
-            sleep(0.5)
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
@@ -41,7 +40,9 @@ def ostacolo(cam, mot, sens):
             if x == '1':
                 break
             avanti(mot)
+            sleep(0.1)
             stop(mot)
+            sleep(0.1)
         spegniSensoreInUso(sens)
         print("fine vuoto")
         while True:
@@ -50,7 +51,6 @@ def ostacolo(cam, mot, sens):
             if findAreaNera(im):
                 controllo = 1
                 break'''
-            sleep(0.5)
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
@@ -58,7 +58,9 @@ def ostacolo(cam, mot, sens):
             if x == '0':
                 break
             avanti(mot)
+            sleep(0.1)
             stop(mot)
+            sleep(0.1)
         print("fine pieno")
         destra90(mot)
         sleep(10)
