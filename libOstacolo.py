@@ -24,11 +24,6 @@ def findAreaNera(img):
 
 
 def ostacolo(mot, sens):
-    cam = cv2.VideoCapture(1)
-    cam.set(3, 640)
-    cam.set(4, 480)
-    if not cam.isOpened():
-        cam.open(0)
     # retro(mot)
     # sleep(0.5)
     stop(mot)
@@ -51,10 +46,9 @@ def ostacolo(mot, sens):
         spegniSensoreInUso(sens)
         print("fine vuoto")
         while True:
-            _, img = cam.read(0)
-            if findAreaNera(img):
-                controllo = 1
-                break
+            # if findAreaNera(img):
+            #     controllo = 1
+            #     break
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
