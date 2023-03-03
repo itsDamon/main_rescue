@@ -41,10 +41,11 @@ def ostacolo(cam, mot, sens):
                 break
             avanti(mot)
             sleep(0.1)
-            stop(mot)
+            # stop(mot)
             sleep(0.1)
         spegniSensoreInUso(sens)
         print("fine vuoto")
+        stop(mot)
         while True:
             '''
             im = cam.capture_array()
@@ -59,8 +60,9 @@ def ostacolo(cam, mot, sens):
                 break
             avanti(mot)
             sleep(0.1)
-            stop(mot)
+            # stop(mot)
             sleep(0.1)
         print("fine pieno")
         destra90(mot)
         sleep(1)
+        stop(mot)
