@@ -38,6 +38,7 @@ def ostacolo(mot, sens):
             x = str(sens.read_until())[2:3]
             print(x)
             if x == '1':
+                stop(mot)
                 break
             avanti(mot)
             sleep(0.1)
@@ -45,6 +46,7 @@ def ostacolo(mot, sens):
             sleep(0.1)
         spegniSensoreInUso(sens)
         print("fine vuoto")
+        sleep(1)
         while True:
             # if findAreaNera(img):
             #     controllo = 1
@@ -54,6 +56,7 @@ def ostacolo(mot, sens):
             x = str(sens.read_until())[2:3]
             print(x)
             if x == '0':
+                stop(mot)
                 break
             avanti(mot)
             sleep(0.1)
