@@ -3,7 +3,7 @@ import serial
 
 from libOstacolo import check
 from muoviMotoriLib import *
-from nuovoTrovaVerdeLib import *
+from nuovoTrovaVerdeLibPagani import *
 from segui_linea_con_sensori import *
 
 test1 = serial.Serial("/dev/ttyACM0", 9600)
