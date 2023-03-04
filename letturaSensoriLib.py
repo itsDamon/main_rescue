@@ -52,8 +52,8 @@ def check(ser):
 
 
 def motoriOSensori():
-    test1 = serial.Serial("/dev/ttyACM2", 9600)
-    test2 = serial.Serial("/dev/ttyACM3", 9600)
+    test1 = serial.Serial("/dev/ttyACM0", 9600)
+    test2 = serial.Serial("/dev/ttyACM1", 9600)
     print(test1)
     print(test2)
     x = check(test1)
