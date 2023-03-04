@@ -65,7 +65,6 @@ if __name__ == '__main__':
                         sinistra90(motori)
                         print("Vsinistra")
                     # break
-                    exit(0)
                     checkVerde = False
 
             mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask

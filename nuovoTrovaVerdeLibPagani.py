@@ -56,7 +56,7 @@ def trovaVerde(img):
         quanti = len(valide)
         if quanti == 2:
             # caso doppio verde check di sicurezza
-            direzione = 3  # inversione
+            direzione = 0  # inversione
         elif quanti == 1:
             curvo = valide[0]
             if curvo["sinistra"] or not curvo["destra"]:
