@@ -59,7 +59,7 @@ def trovaVerde(img):
             direzione = 3  # inversione
         elif quanti == 1:
             curvo = valide[0]
-            if curvo["sinistra"] == True or curvo["destra"] == False:
+            if curvo["sinistra"] or not curvo["destra"]:
                 direzione = 2  # destra
             else:
                 direzione = 1  # sinistra
@@ -112,11 +112,13 @@ def nero(img, x, y, w, h):
 
     cv2.imshow("sotto", img)
     area = {"sopra": isNero(sopra, 20),  # soglia ho messo 20
-            "sotto": isNero(sotto, 20), "destra": isNero(destra, 20), "sinistra": isNero(sinistra, 20)}
+            "sotto": isNero(sotto, 20),
+            "destra": isNero(destra, 20),
+            "sinistra": isNero(sinistra, 20)}
     if x < 20:
         area["sinistra"] = False
     if (y + h) > 450:
-        area["basso"] = False
+        area["sotto"] = False
     if x + w > 620:
         area["destra"] = False
 
