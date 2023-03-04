@@ -123,7 +123,7 @@ def nero(img, x, y, w, h):
         area["destra"] = False
 
     print(area)
-    cv2.waitKey(0)
+    #cv2.waitKey(0)
     return area
 
 
