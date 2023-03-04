@@ -63,7 +63,6 @@ def trovaVerde(img):
                 direzione = 2  # destra
             else:
                 direzione = 1  # sinistra
-        cv2.waitKey()
         print("direzione ", direzione)
         return direzione
 
@@ -123,7 +122,6 @@ def nero(img, x, y, w, h):
         area["destra"] = False
 
     print(area)
-    cv2.waitKey(0)
     return area
 
 
