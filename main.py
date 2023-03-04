@@ -74,13 +74,13 @@ if __name__ == '__main__':
                     if verde == 1:  # gira a destra
                         destra90(motori)
                         print("Vdestra")
-                    elif verde == 2:  # gira a sinstra
+                    elif verde == 2:  # gira a sinistra
                         sinistra90(motori)
                         print("Vsinistra")
                     # break
                     checkVerde = False
 
-            mask = filtro(im)  # chiama la funione filtro e assegna il valore a mask
+            mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, 100, MAXY - 10)
             # print(direzione)
             stop(motori)
@@ -88,7 +88,7 @@ if __name__ == '__main__':
             if direzione == 1:  # gira a destra
                 destra(motori)
                 print("destra")
-            elif direzione == 2:  # gira a sinstra
+            elif direzione == 2:  # gira a sinistra
                 sinistra(motori)
                 print("sinistra")
             elif direzione == 3:  # vai dritto
