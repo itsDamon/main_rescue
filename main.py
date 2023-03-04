@@ -60,12 +60,12 @@ if __name__ == '__main__':
                         print("vstop")
                     if verde == 1:  # gira a destra
                         avanti(motori)
-                        sleep(0.3)
+                        sleep(0.5)
                         destra90(motori)
                         print("Vdestra")
                     elif verde == 2:  # gira a sinistra
                         avanti(motori)
-                        sleep(0.3)
+                        sleep(0.5)
                         sinistra90(motori)
                         print("Vsinistra")
                     # break
