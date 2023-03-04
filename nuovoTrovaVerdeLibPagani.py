@@ -6,7 +6,7 @@ light_green = np.array([36, 50, 50])
 dark_green = np.array([85, 255, 255])
 
 
-def isVerde(img):
+def isverde(img):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, light_green, dark_green)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
