@@ -1,23 +1,11 @@
 import RPi.GPIO as GPIO
-import serial
 
-from libOstacolo import check
+from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLibPagani import *
 from segui_linea_con_sensori import *
 
-test1 = serial.Serial("/dev/ttyACM0", 9600)
-test2 = serial.Serial("/dev/ttyACM1", 9600)
-print(test1)
-print(test2)
-x = check(test1)
-
-if x:
-    motori = test1
-    sensori = test2
-else:
-    motori = test2
-    sensori = test1
+motori, sensori = motoriOSensori()
 
 # set pin
 pinReset = 27  # pin 13 D3
