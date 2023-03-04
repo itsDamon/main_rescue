@@ -59,9 +59,13 @@ if __name__ == '__main__':
                         curva180(motori)
                         print("vstop")
                     if verde == 1:  # gira a destra
+                        avanti(motori)
+                        sleep(0.3)
                         destra90(motori)
                         print("Vdestra")
                     elif verde == 2:  # gira a sinistra
+                        avanti(motori)
+                        sleep(0.3)
                         sinistra90(motori)
                         print("Vsinistra")
                     # break
