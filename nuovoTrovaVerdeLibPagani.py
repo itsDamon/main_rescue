@@ -19,7 +19,7 @@ def isVerde(img):
         area = w * h
         if area > 200:
             return True
-    return False
+    return False #viva gesu
 
 
 def trovaVerde(img):
