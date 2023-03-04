@@ -19,7 +19,7 @@ def isVerde(img):
         area = w * h
         if area > 200:
             return True
-    return False #viva gesu
+    return False
 
 
 def trovaVerde(img):
@@ -127,7 +127,7 @@ def nero(img, x, y, w, h):
     return area
 
 
-cap = cv2.VideoCapture(0)
+'''cap = cv2.VideoCapture(0)
 if not cap.isOpened():
     cap.open(0)
 
@@ -135,4 +135,4 @@ while True:
     ret, image = cap.read(0)
     cv2.waitKey(1)
     cv2.imshow('window', image)
-    trovaVerde(image)
+    trovaVerde(image)'''
