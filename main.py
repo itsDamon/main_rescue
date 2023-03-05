@@ -1,23 +1,11 @@
 import RPi.GPIO as GPIO
-import serial
 
-from libOstacolo import check
+from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
-from nuovoTrovaVerdeLib import *
+from nuovoTrovaVerdeLibPagani import *
 from segui_linea_con_sensori import *
 
-test1 = serial.Serial("/dev/ttyACM0", 9600)
-test2 = serial.Serial("/dev/ttyACM1", 9600)
-print(test1)
-print(test2)
-x = check(test1)
-
-if x:
-    motori = test1
-    sensori = test2
-else:
-    motori = test2
-    sensori = test1
+motori, sensori = motoriOSensori()
 
 # set pin
 pinReset = 27  # pin 13 D3
@@ -66,22 +54,24 @@ if __name__ == '__main__':
                 if verde:
                     stop(motori)
                     verde = trovaVerde(im)
-                    print("curvaVerde")
-                    print(verde)
-                    sleep(5)
+                    print("curvaVerde ", verde)
                     if verde == 0:
                         curva180(motori)
                         print("vstop")
                     if verde == 1:  # gira a destra
+                        avanti(motori)
+                        sleep(0.5)
                         destra90(motori)
                         print("Vdestra")
-                    elif verde == 2:  # gira a sinstra
+                    elif verde == 2:  # gira a sinistra
+                        avanti(motori)
+                        sleep(0.5)
                         sinistra90(motori)
                         print("Vsinistra")
                     # break
                     checkVerde = False
 
-            mask = filtro(im)  # chiama la funione filtro e assegna il valore a mask
+            mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, 100, MAXY - 10)
             # print(direzione)
             stop(motori)
@@ -89,7 +79,7 @@ if __name__ == '__main__':
             if direzione == 1:  # gira a destra
                 destra(motori)
                 print("destra")
-            elif direzione == 2:  # gira a sinstra
+            elif direzione == 2:  # gira a sinistra
                 sinistra(motori)
                 print("sinistra")
             elif direzione == 3:  # vai dritto

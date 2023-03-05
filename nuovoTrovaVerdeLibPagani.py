@@ -6,7 +6,7 @@ light_green = np.array([36, 50, 50])
 dark_green = np.array([85, 255, 255])
 
 
-def isVerde(img):
+def isverde(img):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(hsv, light_green, dark_green)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -56,14 +56,13 @@ def trovaVerde(img):
         quanti = len(valide)
         if quanti == 2:
             # caso doppio verde check di sicurezza
-            direzione = 3  # inversione
+            direzione = 0  # inversione
         elif quanti == 1:
             curvo = valide[0]
             if curvo["sinistra"] or not curvo["destra"]:
-                direzione = 2  # destra
+                direzione = 1  # destra
             else:
-                direzione = 1  # sinistra
-        cv2.waitKey()
+                direzione = 2  # sinistra
         print("direzione ", direzione)
         return direzione
 
@@ -123,7 +122,6 @@ def nero(img, x, y, w, h):
         area["destra"] = False
 
     print(area)
-    #cv2.waitKey(0)
     return area
 
 

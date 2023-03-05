@@ -1,5 +1,7 @@
 from time import sleep
 
+import serial
+
 n = 10
 
 
@@ -47,3 +49,19 @@ def check(ser):
         if lettera == 'y':
             return True
     return False
+
+
+def motoriOSensori():
+    test1 = serial.Serial("/dev/ttyACM0", 9600)
+    test2 = serial.Serial("/dev/ttyACM1", 9600)
+    print(test1)
+    print(test2)
+    x = check(test1)
+
+    if x:
+        motori = test1
+        sensori = test2
+    else:
+        motori = test2
+        sensori = test1
+    return motori, sensori
