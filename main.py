@@ -42,35 +42,7 @@ if __name__ == '__main__':
             cv2.rectangle(copia, (offset, 100), (dim + offset, MAXY - 10), (255, 0, 0))
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
-            if not checkVerde:
-                imV = im[10:MAXY, 20:MAXX - 20]
-                #checkVerde = isverde(imV)
-                print(f"verde {checkVerde}")
-                checkVerde = True #modificato
-            else:
-                imV = im[100:MAXY, 20:MAXX - 20]
-                cv2.imshow("verde", imV)
-                verde = True #isverde(imV)
-                print(verde)
-                if verde:
-                    stop(motori)
-                    verde = trovaVerde(im)
-                    print("curvaVerde ", verde)
-                    if verde == 0:
-                        curva180(motori)
-                        print("vstop")
-                    if verde == 1:  # gira a destra
-                        avanti(motori)
-                        sleep(0.5)
-                        destra90(motori)
-                        print("Vdestra")
-                    elif verde == 2:  # gira a sinistra
-                        avanti(motori)
-                        sleep(0.5)
-                        sinistra90(motori)
-                        print("Vsinistra")
-                    # break
-                    checkVerde = False
+            trovaVerde(copia)
 
             mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, 100, MAXY - 10)
