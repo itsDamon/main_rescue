@@ -1,6 +1,7 @@
 import cv2
 import imutils
 import numpy as np
+from variabiliGlobali import *
 
 # soglia nero
 # controllo alto e tolto <30 dal ciclo
@@ -46,7 +47,7 @@ def trovaVerde(img):
                 continue
             listaAree.append(nero(img, x, y, w, h))
             # se non arriva un verde vicino non inizio a valutare se curvare
-            if y > 100:
+            if y > MAXY//5:
                 attivati = True
         if attivati == False:  # non fare nulla
             return -1
@@ -127,9 +128,9 @@ def nero(img, x, y, w, h):
         area["sinistra"] = False
     if y < 30:
         area["sopra"] = False
-    if (y + h) > 450:
+    if (y + h) > 130:
         area["basso"] = False
-    if x + w > 620:
+    if x + w > 236:
         area["destra"] = False
 
     return area
