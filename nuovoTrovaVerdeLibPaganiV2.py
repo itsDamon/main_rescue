@@ -126,7 +126,7 @@ def nero(img, x, y, w, h):
     }
     if x < 20:
         area["sinistra"] = False
-    if y < 20:
+    if y < 16:
         area["sopra"] = False
     if (y + h) > 130:
         area["basso"] = False
