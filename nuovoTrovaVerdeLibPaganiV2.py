@@ -62,13 +62,13 @@ def trovaVerde(img):
         print("valide:", valide)
         quanti = len(valide)
         if quanti == 2:
-            direzione = 0  # inversione
+            direzione = 0  # inversione (controllato nel main)
         elif quanti == 1:
             curvo = valide[0]
             if curvo["sinistra"] == True or curvo["destra"] == False:
-                direzione = 1  # destra
+                direzione = 1  # destra (controllato nel main)
             else:
-                direzione = 2  # sinistra
+                direzione = 2  # sinistra (controllato nel main)
 
         print("direzione ", direzione)
         return direzione
