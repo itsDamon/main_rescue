@@ -43,6 +43,19 @@ if __name__ == '__main__':
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
             trovaVerde(copia)
+            if trovaVerde == 0:
+                curva180(motori)
+                print("vstop")
+            if trovaVerde == 1:  # gira a destra
+                avanti(motori)
+                sleep(0.5)
+                destra90(motori)
+                print("Vdestra")
+            elif trovaVerde == 2:  # gira a sinistra
+                avanti(motori)
+                sleep(0.5)
+                sinistra90(motori)
+                print("Vsinistra")
 
             mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, 100, MAXY - 10)
