@@ -44,12 +44,12 @@ if __name__ == '__main__':
 
             if not checkVerde:
                 imV = im[10:MAXY, 20:MAXX - 20]
-                checkVerde = isverde(imV)
+                #checkVerde = isverde(imV)
                 print(f"verde {checkVerde}")
             else:
                 imV = im[100:MAXY, 20:MAXX - 20]
                 cv2.imshow("verde", imV)
-                verde = isverde(imV)
+                verde = True #isverde(imV)
                 print(verde)
                 if verde:
                     stop(motori)
