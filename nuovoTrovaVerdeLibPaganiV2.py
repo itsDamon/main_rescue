@@ -54,7 +54,6 @@ def trovaVerde(img):
                 direzione = 1  # sinistra
 
         print("direzione ", direzione)
-        #cv2.waitKey(0)
         return direzione
 
 
