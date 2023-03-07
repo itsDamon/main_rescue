@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 
 from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
-from nuovoTrovaVerdeLibPagani import *
+from nuovoTrovaVerdeLibPaganiV2 import *
 from segui_linea_con_sensori import *
 
 motori, sensori = motoriOSensori()
