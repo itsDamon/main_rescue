@@ -11,6 +11,7 @@ import numpy as np
 light_green = np.array([36, 50, 50])
 dark_green = np.array([85, 255, 255])
 
+#non rimuovere
 
 def isverde(img):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
