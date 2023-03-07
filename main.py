@@ -42,17 +42,17 @@ if __name__ == '__main__':
             cv2.rectangle(copia, (offset, 100), (dim + offset, MAXY - 10), (255, 0, 0))
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
-            trovaVerde(im)
-            print(trovaVerde(im))
-            if trovaVerde == 0:
+            verde = trovaVerde(im)
+            print(verde)
+            if verde == 0:
                 curva180(motori)
                 print("vstop")
-            if trovaVerde == 1:  # gira a destra
+            if verde == 1:  # gira a destra
                 avanti(motori)
                 sleep(0.5)
                 destra90(motori)
                 print("Vdestra")
-            elif trovaVerde == 2:  # gira a sinistra
+            elif verde == 2:  # gira a sinistra
                 avanti(motori)
                 sleep(0.5)
                 sinistra90(motori)
