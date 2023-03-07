@@ -47,7 +47,7 @@ def trovaVerde(img):
                 continue
             listaAree.append(nero(img, x, y, w, h))
             # se non arriva un verde vicino non inizio a valutare se curvare
-            if y > MAXY//5:
+            if y > MAXY//2:
                 attivati = True
         if attivati == False:  # non fare nulla
             return -1
@@ -126,7 +126,7 @@ def nero(img, x, y, w, h):
     }
     if x < 20:
         area["sinistra"] = False
-    if y < 16:
+    if y < 5:
         area["sopra"] = False
     if (y + h) > 130:
         area["basso"] = False
