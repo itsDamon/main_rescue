@@ -46,6 +46,7 @@ if __name__ == '__main__':
                 imV = im[10:MAXY, 20:MAXX - 20]
                 #checkVerde = isverde(imV)
                 print(f"verde {checkVerde}")
+                checkVerde = True
             else:
                 imV = im[100:MAXY, 20:MAXX - 20]
                 cv2.imshow("verde", imV)
