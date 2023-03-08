@@ -55,8 +55,8 @@ def ostacolo(mot, sens):
         sleep(1)
         while True:
             if findAreaNera(img):
-                 controllo = 1
-                 break
+                controllo = 1
+                break
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
@@ -86,7 +86,8 @@ def ostacolo(mot, sens):
 
 cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
 camera = Picamera2()  # assegna la videocamera e assegna il video a camera
-camera.configure(camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
+camera.configure(
+    camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
 camera.controls.Brightness = 0
 camera.set_controls({"ExposureTime": 12000, "AnalogueGain": 1.0, "AeEnable": 0})  # controllo esposizione
 camera.start()  # avvia la videocamera
