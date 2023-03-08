@@ -72,6 +72,7 @@ def ostacolo(mot, sens):
         spegniSensoreInUso(sens)
         print("fine pieno")
         destra90(mot)
+        sleep(5)
         camera.start()
         for _ in range(1500):
             frame = camera.capture_array()
