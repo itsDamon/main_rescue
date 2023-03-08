@@ -76,6 +76,7 @@ def ostacolo(mot, sens):
         for _ in range(15):
             frame = camera.capture_array()
             cv2.imshow("DopoOstacolo", frame)
+        camera.stop()
         svuota(mot)
         stop(mot)
         print("Mario")
