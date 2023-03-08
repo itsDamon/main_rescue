@@ -73,7 +73,7 @@ def ostacolo(mot, sens):
         print("fine pieno")
         destra90(mot)
         camera.start()
-        for _ in range(15000):
+        for _ in range(1500):
             frame = camera.capture_array()
             cv2.imshow("DopoOstacolo", frame)
         camera.stop()
