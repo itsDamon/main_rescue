@@ -1,6 +1,8 @@
 import cv2
 import imutils
 
+from picamera2 import Picamera2
+
 from letturaSensoriLib import *
 from muoviMotoriLib import *
 
