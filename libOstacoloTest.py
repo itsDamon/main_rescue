@@ -73,11 +73,14 @@ def ostacolo(mot, sens):
         print("fine pieno")
         destra90(mot)
         camera.start()
-        frame = camera.capture_array()
-        cv2.imshow("DopoOstacolo", frame)
+        for _ in range(15):
+            frame = camera.capture_array()
+            cv2.imshow("DopoOstacolo", frame)
         svuota(mot)
         stop(mot)
+        print("Mario")
         sleep(5)
+        print("La Vecchia")
 
 
 cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
