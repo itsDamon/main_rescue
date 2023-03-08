@@ -54,7 +54,7 @@ def ostacolo(mot, sens):
         print("fine vuoto")
         sleep(1)
         while True:
-            if findAreaNera(img):
+            if findAreaNera(im):
                 controllo = 1
                 break
             svuota(sens)
