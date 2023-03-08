@@ -54,9 +54,9 @@ def ostacolo(mot, sens):
         print("fine vuoto")
         sleep(1)
         while True:
-            # if findAreaNera(img):
-            #     controllo = 1
-            #     break
+            if findAreaNera(img):
+                 controllo = 1
+                 break
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
