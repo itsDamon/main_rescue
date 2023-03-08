@@ -2,6 +2,7 @@ import cv2
 import imutils
 
 from picamera2 import Picamera2
+from variabiliGlobali import *
 
 from letturaSensoriLib import *
 from muoviMotoriLib import *
