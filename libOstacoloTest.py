@@ -28,12 +28,14 @@ def ostacolo(mot, sens):
     # sleep(0.5)
     stop(mot)
     sleep(5)
-    # sinistra90(mot)
+    camera.stop()
+    sinistra90(mot)
     controllo = 0
     while controllo != 1:
         x = '0'
         while True:
             svuota(sens)
+
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
             print(x)
@@ -67,6 +69,24 @@ def ostacolo(mot, sens):
         spegniSensoreInUso(sens)
         print("fine pieno")
         destra90(mot)
+        camera.start()
+        frame = camera.capture_array()
+        cv2.imshow("DopoOstacolo", frame)
         svuota(mot)
         stop(mot)
         sleep(5)
+
+
+cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
+camera = Picamera2()  # assegna la videocamera e assegna il video a camera
+camera.configure(camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
+camera.controls.Brightness = 0
+camera.set_controls({"ExposureTime": 12000, "AnalogueGain": 1.0, "AeEnable": 0})  # controllo esposizione
+camera.start()  # avvia la videocamera
+
+false = True
+mot, sens = motoriOSensori()
+while false:
+    im = camera.capture_array()
+    cv2.imshow("Camera", im)
+    ostacolo(mot, sens)
