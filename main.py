@@ -35,7 +35,7 @@ def setOstacolo():
 
 
 GPIO.add_event_detect(pinReset, GPIO.FALLING, callback=reset, bouncetime=100)
-GPIO.add_event_detect(pinOstacolo, GPIO.RASING, callback=setOstacolo, bouncitime=1000)
+GPIO.add_event_detect(pinOstacolo, GPIO.RISING, callback=setOstacolo, bouncitime=1000)
 
 if __name__ == '__main__':
     while True:
