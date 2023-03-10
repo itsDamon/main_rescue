@@ -75,9 +75,9 @@ def check_sinistra(originale, ymin, ymax):
         c = max(cnts, key=cv2.contourArea)
         x, y, w, h = cv2.boundingRect(c)
         area = h * w
-        if 50 < area < 500:
+        if areaValidaMin < area < areaValidaMax:
             return True
-        elif area > 499:
+        elif area >= areaValidaMax:
             return 4
     return False
 
@@ -91,9 +91,9 @@ def check_destra(originale, ymin, ymax):
         c = max(cnts, key=cv2.contourArea)
         x, y, w, h = cv2.boundingRect(c)
         area = h * w
-        if 50 < area < 500:
+        if areaValidaMin < area < areaValidaMax:
             return True
-        elif area > 499:
+        elif area >= areaValidaMax:
             return 4
     return False
 
