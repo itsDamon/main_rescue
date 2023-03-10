@@ -20,8 +20,8 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
     (T, threshed) = cv2.threshold(gray, 40, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
     threshed = cv2.erode(threshed, None, iterations=3)
     copy = threshed.copy()
-    cv2.rectangle(copy, (MAXX - offset - dim, 100), (MAXX - offset, MAXY - 10), (255, 0, 0))
-    cv2.rectangle(copy, (offset, 100), (dim + offset, MAXY - 10), (255, 0, 0))
+    cv2.rectangle(copy, (MAXX - offset - dim, MINY), (MAXX - offset, MAXY - 10), (255, 0, 0))
+    cv2.rectangle(copy, (offset, MINY), (dim + offset, MAXY - 10), (255, 0, 0))
     cv2.imshow("Tresh", copy)  # la mostra a video
     return threshed
 
