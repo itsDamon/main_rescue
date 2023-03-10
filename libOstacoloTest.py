@@ -57,6 +57,7 @@ def ostacolo(mot, sens, camera):
         sleep(1)
         while True:
             camera.start()
+            sleep(0.3)
             im = camera.capture_array()
             if findAreaNera(im):
                 controllo = 1
@@ -79,10 +80,3 @@ def ostacolo(mot, sens, camera):
         print("fine pieno")
         destra90(mot)
         sleep(5)
-
-false = True
-mot, sens = motoriOSensori()
-while false:
-    im = camera.capture_array()
-    cv2.imshow("Camera", im)
-    ostacolo(mot, sens)
