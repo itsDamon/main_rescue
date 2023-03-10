@@ -4,7 +4,6 @@ from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLibPaganiV2 import *
 from segui_linea_con_sensori import *
-from linea_con_sensori import *
 
 motori, sensori = motoriOSensori()
 
