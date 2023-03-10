@@ -62,6 +62,7 @@ if __name__ == '__main__':
             direzione = assegnaDirezione(mask, MINY, CROPSTART - 10)
             # print(direzione)
             stop(motori)
+
             sleep(0.01)
             if direzione == 1:  # gira a destra
                 destra(motori)
