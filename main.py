@@ -38,8 +38,8 @@ if __name__ == '__main__':
             im = camera.capture_array()
             # im = cv2.flip(im, 0) #decommentare in caso che la videocamera è al contrario
             copia = im.copy()
-            cv2.rectangle(copia, (MAXX - offset - dim, MINY), (MAXX - offset, MAXY - 10), (255, 0, 0))
-            cv2.rectangle(copia, (offset, MINY), (dim + offset, MAXY - 10), (255, 0, 0))
+            cv2.rectangle(copia, (MAXX - offset - dim, MINY), (MAXX - offset, CROPSTART - 10), (255, 0, 0))
+            cv2.rectangle(copia, (offset, MINY), (dim + offset, CROPSTART - 10), (255, 0, 0))
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
             verde = trovaVerde(im)
@@ -59,7 +59,7 @@ if __name__ == '__main__':
                 print("Vsinistra")
 
             mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
-            direzione = assegnaDirezione(mask, MINY, MAXY - 10)
+            direzione = assegnaDirezione(mask, MINY, CROPSTART - 10)
             # print(direzione)
             stop(motori)
             sleep(0.01)
