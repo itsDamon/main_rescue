@@ -4,16 +4,19 @@ from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLibPaganiV2 import *
 from segui_linea_con_sensori import *
+from linea_con_sensori import *
 
 motori, sensori = motoriOSensori()
 
 # set pin
-pinReset = 27  # pin 13 D3
+pinReset = 20  # pin 40
+pinOstacolo = 21 #pin 38
 # set pin mode
 GPIO.setmode(GPIO.BCM)  # enable gpio
 GPIO.setup(pinReset, GPIO.IN)  # set pin output
 # setup thread per reset
 GPIO.setup(pinReset, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(pinOstacolo, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 # variabili
 direzione = 3
 checkVerde = False
@@ -27,7 +30,13 @@ def reset():
     direzione = 3
 
 
+def setOstacolo():
+    stop(motori)
+    STATO = 2
+
+
 GPIO.add_event_detect(pinReset, GPIO.FALLING, callback=reset, bouncetime=100)
+GPIO.add_event_detect(pinOstacolo, GPIO.RASING, callback=setOstacolo, bouncitime=1000)
 
 if __name__ == '__main__':
     while True:
@@ -73,6 +82,8 @@ if __name__ == '__main__':
             elif direzione == 3:  # vai dritto
                 avanti(motori)
                 print("avanti")
+        elif STATO == 2:
+            ostacolo(motori)
 
 '''
 camera.close()

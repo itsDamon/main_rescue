@@ -26,12 +26,14 @@ def findAreaNera(img):
     return False
 
 
-def ostacolo(mot, sens):
+def ostacolo(mot, sens, camera):
     # retro(mot)
     # sleep(0.5)
     stop(mot)
     sleep(5)
     camera.stop()
+    svuota(mot)
+    svuota(sens)
     sinistra90(mot)
     controllo = 0
     while controllo != 1:
@@ -54,9 +56,13 @@ def ostacolo(mot, sens):
         print("fine vuoto")
         sleep(1)
         while True:
+            camera.start()
+            im = camera.capture_array()
             if findAreaNera(im):
                 controllo = 1
                 break
+            camera.stop()
+            svuota(mot)
             svuota(sens)
             accendiUltrasuoniDestra(sens)
             x = str(sens.read_until())[2:3]
@@ -73,25 +79,6 @@ def ostacolo(mot, sens):
         print("fine pieno")
         destra90(mot)
         sleep(5)
-        camera.start()
-        for _ in range(1500):
-            frame = camera.capture_array()
-            cv2.imshow("DopoOstacolo", frame)
-        camera.stop()
-        svuota(mot)
-        stop(mot)
-        print("Mario")
-        sleep(5)
-        print("La Vecchia")
-
-
-cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
-camera = Picamera2()  # assegna la videocamera e assegna il video a camera
-camera.configure(
-    camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
-camera.controls.Brightness = 0
-camera.set_controls({"ExposureTime": 12000, "AnalogueGain": 1.0, "AeEnable": 0})  # controllo esposizione
-camera.start()  # avvia la videocamera
 
 false = True
 mot, sens = motoriOSensori()
