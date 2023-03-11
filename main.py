@@ -4,12 +4,13 @@ from letturaSensoriLib import motoriOSensori
 from muoviMotoriLib import *
 from nuovoTrovaVerdeLibPaganiV2 import *
 from segui_linea_con_sensori import *
+import sys
 
 motori, sensori = motoriOSensori()
 
 # set pin
-pinReset = 20  # pin 40
-pinOstacolo = 21 #pin 38
+pinReset = 21  # pin 40
+pinOstacolo = 2 #pin 38
 # set pin mode
 GPIO.setmode(GPIO.BCM)  # enable gpio
 GPIO.setup(pinReset, GPIO.IN)  # set pin output
@@ -22,11 +23,12 @@ checkVerde = False
 STATO = 1
 
 
-def reset():
+def reset(channel):
     global STATO, checkVerde, direzione
     checkVerde = False
     STATO = 1
     direzione = 3
+    sys.exit()
 
 
 def setOstacolo():
