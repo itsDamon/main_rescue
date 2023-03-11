@@ -55,8 +55,6 @@ if __name__ == '__main__':
             verde = trovaVerde(im)
             print(verde)
             if verde == 0:
-                avanti(motori)
-                sleep(0.8)
                 curva180(motori)
                 print("vstop")
             if verde == 1:  # gira a destra
