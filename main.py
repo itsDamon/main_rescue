@@ -88,6 +88,7 @@ if __name__ == '__main__':
                 print("avanti")
             sleep(0.02)
             stop(motori)
+            sleep(0.02)
         elif STATO == 2:
             ostacolo(motori)
 
