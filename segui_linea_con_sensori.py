@@ -14,6 +14,16 @@ camera.set_controls({"ExposureTime": 14000, "AnalogueGain": 1.0, "AeEnable": 0})
 camera.start()  # avvia la videocamera
 sleep(2)  # pausa 2s
 
+def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=bianco e viceversa)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # converte l'immagine da bgr a grayscale
+    (T, threshed) = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
+    threshed = cv2.erode(threshed, None, iterations=3)
+    copy = threshed.copy()
+    cv2.rectangle(copy, (MAXX - offset - dim, MINY), (MAXX - offset, CROPSTART - 10), (255, 0, 0))
+    cv2.rectangle(copy, (offset, MINY), (dim + offset, CROPSTART - 10), (255, 0, 0))
+    cv2.imshow("Tresh", copy)  # la mostra a video
+    return threshed
+
 def incrocio(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
@@ -74,8 +84,8 @@ def check_destra(originale, ymin, ymax):
 def assegnaDirezione(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
-    centro = check_centro(originale, ymin, ymax)
-    if centro :
+    centro = check_centro(originale, MINY2, MINY)
+    if centro:
         return 3
     if destra == 4 or sinistra == 4:
         pino = incrocio(originale, MINY2, ymin)
