@@ -14,45 +14,6 @@ camera.set_controls({"ExposureTime": 14000, "AnalogueGain": 1.0, "AeEnable": 0})
 camera.start()  # avvia la videocamera
 sleep(2)  # pausa 2s
 
-
-def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=bianco e viceversa)
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # converte l'immagine da bgr a grayscale
-    (T, threshed) = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)  # converte in bianco e nero l'immagine
-    threshed = cv2.erode(threshed, None, iterations=3)
-    copy = threshed.copy()
-    cv2.rectangle(copy, (MAXX - offset - dim, MINY), (MAXX - offset, CROPSTART - 10), (255, 0, 0))
-    cv2.rectangle(copy, (offset, MINY), (dim + offset, CROPSTART - 10), (255, 0, 0))
-    cv2.imshow("Tresh", copy)  # la mostra a video
-    return threshed
-
-
-def findBordi(originale, ymin, ymax):
-    mask = originale[ymin:ymax, 20:MAXX - 20]
-    cv2.imshow("nero", mask)
-    cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = imutils.grab_contours(cnts)
-
-    if len(cnts) != 0:
-        c = max(cnts, key=cv2.contourArea)
-        x, y, w, h = cv2.boundingRect(c)
-        cx = (x + (w // 2))  # trova il punto medio
-        # print(w)
-        controllo = 1
-        if w > 60:
-            controllo = incrocio(originale, MINY, ymin)
-            if controllo != 4:
-                return controllo
-            else:
-                controllo = 10
-        # print(cx)
-        if cx > (MAXX // 2) + 25:
-            return 1 * controllo  # gira a destra
-        if cx < (MAXX // 2) - 25:
-            return 2 * controllo  # gira a sinistra
-
-    return 3  # vai dritto
-
-
 def incrocio(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
@@ -65,6 +26,18 @@ def incrocio(originale, ymin, ymax):
         return 2
     return 4
 
+def check_centro(originale, ymin, ymax):
+    mask = originale[ymin:ymax, dim + offset : MAXX - offset - dim]
+    cv2.imshow("sinistra", mask)
+    cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts)
+    if len(cnts) != 0:
+        c = max(cnts, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(c)
+        area = h * w
+        if areaValidaMin < area:
+            return True
+    return False
 
 def check_sinistra(originale, ymin, ymax):
     mask = originale[ymin:ymax, offset:dim + offset]
@@ -101,6 +74,9 @@ def check_destra(originale, ymin, ymax):
 def assegnaDirezione(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
+    centro = check_centro(originale, ymin, ymax)
+    if centro :
+        return 3
     if destra == 4 or sinistra == 4:
         pino = incrocio(originale, MINY2, ymin)
         if pino != 4:
