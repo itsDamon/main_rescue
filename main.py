@@ -82,6 +82,7 @@ if __name__ == '__main__':
                 destra(motori)
                 print("destra")
                 sleep(0.3)
+                avanti(motori)
             elif direzione == 2:  # gira a sinistra
                 sinistra(motori)
                 print("sinistra")
@@ -89,6 +90,7 @@ if __name__ == '__main__':
             elif direzione == 3:  # vai dritto
                 avanti(motori)
                 print("avanti")
+                avanti(motori)
         elif STATO == 2:
             ostacolo(motori)
 
