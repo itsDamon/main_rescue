@@ -87,6 +87,7 @@ def assegnaDirezione(originale, ymin, ymax):
         return 2
     return 3
 
++
 
 direzione = 3
 checkVerde = False
