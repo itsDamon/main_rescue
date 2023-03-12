@@ -81,11 +81,11 @@ if __name__ == '__main__':
             if direzione == 1:  # gira a destra
                 destra(motori)
                 print("destra")
-                sleep(0.3)
+                sleep(0.5)
             elif direzione == 2:  # gira a sinistra
                 sinistra(motori)
                 print("sinistra")
-                sleep(0.3)
+                sleep(0.5)
             elif direzione == 3:  # vai dritto
                 avanti(motori)
                 print("avanti")
