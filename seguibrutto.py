@@ -15,7 +15,7 @@ camera.start()  # avvia la videocamera
 sleep(2)  # pausa 2s
 
 def check_centro(originale, ymin, ymax):
-    mask = originale[ymin:ymax, offset:dim + offset]
+    mask = originale[ymin:ymax, dim + offset : MAXX - offset - dim]
     cv2.imshow("sinistra", mask)
     cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
