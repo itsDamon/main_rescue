@@ -75,9 +75,6 @@ if __name__ == '__main__':
             mask = filtro(im)  # chiama la funzione filtro e assegna il valore a mask
             direzione = assegnaDirezione(mask, MINY, CROPSTART - 10)
             # print(direzione)
-            stop(motori)
-
-            sleep(0.01)
             if direzione == 1:  # gira a destra
                 destra(motori)
                 print("destra")
