@@ -52,7 +52,6 @@ if __name__ == '__main__':
             copia = im.copy()
             cv2.rectangle(copia, (MAXX - offset - dim, MINY), (MAXX - offset, CROPSTART - 10), (255, 0, 0))
             cv2.rectangle(copia, (offset, MINY), (dim + offset, CROPSTART - 10), (255, 0, 0))
-            cv2.rectangle(copia, (dim + offset , MINY), (MAXX - offset - dim , MINY2), (255, 0, 0))
             cv2.imshow("Camera", copia)  # mostra l'immagine a video
 
             verde = trovaVerde(im)
