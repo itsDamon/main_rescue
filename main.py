@@ -27,17 +27,19 @@ def reset(channel):
     global STATO, checkVerde, direzione
     checkVerde = False
     STATO = 1
+    print("RESETTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT")
     direzione = 3
     sys.exit()
 
 
 def setOstacolo():
+    print("OSTACOLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")
     stop(motori)
     STATO = 2
 
 
-GPIO.add_event_detect(pinReset, GPIO.FALLING, callback=reset, bouncetime=100)
-GPIO.add_event_detect(pinOstacolo, GPIO.RISING, callback=setOstacolo, bouncetime=1000)
+#GPIO.add_event_detect(pinReset, GPIO.FALLING, callback=reset, bouncetime=100)
+#GPIO.add_event_detect(pinOstacolo, GPIO.RISING, callback=setOstacolo, bouncetime=1000)
 
 if __name__ == '__main__':
     while True:
@@ -46,7 +48,7 @@ if __name__ == '__main__':
         elif STATO == 1:
             # Prende immagini dalla cam e le mostra a ogni iterazione del ciclo
             im = camera.capture_array()
-            # im = cv2.flip(im, 0) #decommentare in caso che la videocamera è al contrario
+            # im = cv2.flip(im, 0) #decommentare in caso che la videocamera Ã¨ al contrario
             copia = im.copy()
             cv2.rectangle(copia, (MAXX - offset - dim, MINY), (MAXX - offset, CROPSTART - 10), (255, 0, 0))
             cv2.rectangle(copia, (offset, MINY), (dim + offset, CROPSTART - 10), (255, 0, 0))
