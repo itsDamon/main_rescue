@@ -58,14 +58,13 @@ def assegnaDirezione(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
     centro = check_centro(originale, ymin, ymax)
-    if destra == 4 or sinistra == 4:
-        pino = incrocio(originale, MINY2, ymin)
-        if pino != 4:
-            return pino
-    if (destra or destra == 4) and not sinistra:
-        return 1
-    elif not destra and (sinistra or sinistra == 4):
-        return 2
+    if centro:
+        return 3
+    else:
+        if destra  and not sinistra:
+            return 1
+        elif not destra and sinistra:
+            return 2
     return 3
 
 
