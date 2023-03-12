@@ -86,9 +86,9 @@ if __name__ == '__main__':
             elif direzione == 3:  # vai dritto
                 avanti(motori)
                 print("avanti")
-            sleep(0.04)
+            sleep(0.1)
             stop(motori)
-            sleep(0.02)
+            sleep(0.05)
         elif STATO == 2:
             ostacolo(motori)
 
