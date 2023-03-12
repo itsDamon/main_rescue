@@ -6,5 +6,5 @@ dim = int(MAXX / 100 * 28)  # dimensione aree nere
 MINY = 310  # lunghezza dal crop basso
 MINY2 = 260  # lunghezza del crop dell'incroci0
 CROPSTART = 410 #start del crop
-areaValidaMax = 1000 #area valida per il nero
+areaValidaMax = 500 #area valida per il nero
 areaValidaMin = 200 #area valida per il nero
