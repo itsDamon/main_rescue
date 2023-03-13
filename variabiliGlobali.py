@@ -5,6 +5,6 @@ offset = 55  # distanza dal bordo
 dim = int(MAXX / 100 * 23)  # dimensione aree nere
 MINY = 280  # lunghezza dal crop basso
 MINY2 = 230  # lunghezza del crop dell'incroci0
-CROPSTART = 380  # start del crop delle aree nere aka 480-CROPSTART DISTANZA BASSA
+CROPSTART = 410  # start del crop delle aree nere aka 480-CROPSTART DISTANZA BASSA
 areaValidaMax = 1000  # area valida per il nero
 areaValidaMin = 120  # area valida per il nero
