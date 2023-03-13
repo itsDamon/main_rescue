@@ -27,8 +27,8 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
     return threshed
 
 
-# def lookup(originale):
-#     crop = originale[0:50, 0:MAXX]
+def lookup(originale):
+    crop = originale[0:50, 0:MAXX]
 
 
 def incrocio(originale, ymin, ymax):
