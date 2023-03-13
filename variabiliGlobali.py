@@ -1,7 +1,7 @@
 STATO = 0
 MAXX = 640
 MAXY = 480
-EXPOSURE = 12000
+EXPOSURE = 6000
 offset = 30  # distanza dal bordo
 dim = int(MAXX / 100 * 20)  # dimensione aree nere
 MINY = 310  # lunghezza dal crop basso

@@ -8,7 +8,8 @@ from variabiliGlobali import *
 
 cv2.startWindowThread()  # permette l'aggiornamento di cv2.imshow()
 camera = Picamera2()  # assegna la videocamera e assegna il video a camera
-camera.configure(camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
+camera.configure(
+    camera.create_preview_configuration(main={"format": 'XRGB8888', "size": (MAXX, MAXY)}))  # configura la videocamera
 camera.controls.Brightness = 0
 camera.set_controls({"ExposureTime": EXPOSURE, "AnalogueGain": 1.0, "AeEnable": 0})  # controllo esposizione
 camera.start()  # avvia la videocamera
@@ -26,31 +27,8 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
     return threshed
 
 
-def findBordi(originale, ymin, ymax):
-    mask = originale[ymin:ymax, 20:MAXX - 20]
-    cv2.imshow("nero", mask)
-    cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = imutils.grab_contours(cnts)
-
-    if len(cnts) != 0:
-        c = max(cnts, key=cv2.contourArea)
-        x, y, w, h = cv2.boundingRect(c)
-        cx = (x + (w // 2))  # trova il punto medio
-        # print(w)
-        controllo = 1
-        if w > 60:
-            controllo = incrocio(originale, MINY, ymin)
-            if controllo != 4:
-                return controllo
-            else:
-                controllo = 10
-        # print(cx)
-        if cx > (MAXX // 2) + 25:
-            return 1 * controllo  # gira a destra
-        if cx < (MAXX // 2) - 25:
-            return 2 * controllo  # gira a sinistra
-
-    return 3  # vai dritto
+# def lookup(originale):
+#     crop = originale[0:]
 
 
 def incrocio(originale, ymin, ymax):
@@ -105,6 +83,8 @@ def assegnaDirezione(originale, ymin, ymax):
         pino = incrocio(originale, MINY2, ymin)
         if pino != 4:
             return pino
+        elif pino == 4:
+            return lookup(originale)
     if (destra or destra == 4) and not sinistra:
         return 1
     elif not destra and (sinistra or sinistra == 4):
@@ -112,7 +92,5 @@ def assegnaDirezione(originale, ymin, ymax):
     return 3
 
 
-
 direzione = 3
 checkVerde = False
-
