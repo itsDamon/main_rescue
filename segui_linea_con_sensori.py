@@ -28,9 +28,51 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
 
 
 def lookup(originale):
-    crop = originale[0:50, 0:MAXX]
+    mask = originale[MINY2:MINY, 0:MAXX]
+    cv2.imshow("incrocio", mask)
+    cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts)
+    if len(cnts) != 0:
+        c = max(cnts, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(c)
+        cx = (x + (w // 2))  # trova il punto medio
+        if cx > (MAXX // 2) + 25:
+            return 1  # gira a destra
+        elif cx < (MAXX // 2) - 25:
+            return 2  # gira a sinistra
+        else:
+            return 3
+    return -1
 
 
+def findBordi(originale, ymin, ymax):
+    mask = originale[ymin:ymax, 20:MAXX - 20]
+    cv2.imshow("nero", mask)
+    cnts = cv2.findContours(mask.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cnts = imutils.grab_contours(cnts)
+
+    if len(cnts) != 0:
+        c = max(cnts, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(c)
+        cx = (x + (w // 2))  # trova il punto medio
+        # print(w)
+        controllo = 1
+        if w > 60:
+            controllo = incrocio(originale, MINY, ymin)
+            if controllo != 4:
+                return controllo
+            else:
+                controllo = 10
+        # print(cx)
+        if cx > (MAXX // 2) + 25:
+            return 1 * controllo  # gira a destra
+        if cx < (MAXX // 2) - 25:
+            return 2 * controllo  # gira a sinistra
+
+    return 3  # vai dritto
+
+
+'''
 def incrocio(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
@@ -42,6 +84,7 @@ def incrocio(originale, ymin, ymax):
     elif not destra and sinistra:
         return 2
     return 4
+'''
 
 
 def check_sinistra(originale, ymin, ymax):
@@ -80,9 +123,10 @@ def assegnaDirezione(originale, ymin, ymax):
     destra = check_destra(originale, ymin, ymax)
     sinistra = check_sinistra(originale, ymin, ymax)
     if destra == 4 or sinistra == 4:
-        pino = incrocio(originale, MINY2, ymin)
-        if pino != 4:
-            return pino
+        return lookup(originale)
+        #pino = incrocio(originale, MINY2, ymin)
+        #if pino != 4:
+        #   return pino
         # elif pino == 4:
         #     return lookup(originale)
     if (destra or destra == 4) and not sinistra:
