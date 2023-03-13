@@ -90,6 +90,9 @@ if __name__ == '__main__':
                 retro(motori)
                 print("retro")
                 sleep(0.4)
+            sleep(0.02)
+            stop(motori)
+            sleep(0.005)
         elif STATO == 2:
             ostacolo(motori)
 
