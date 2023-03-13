@@ -27,8 +27,8 @@ def filtro(img):  # converte l'immagine in bianco e nero invertito,(nero reale=b
     return threshed
 
 
-def lookup(originale):
-    crop = originale[0:50, 0:MAXX]
+# def lookup(originale):
+#     crop = originale[0:50, 0:MAXX]
 
 
 def incrocio(originale, ymin, ymax):
@@ -83,8 +83,8 @@ def assegnaDirezione(originale, ymin, ymax):
         pino = incrocio(originale, MINY2, ymin)
         if pino != 4:
             return pino
-        elif pino == 4:
-            return lookup(originale)
+        # elif pino == 4:
+        #     return lookup(originale)
     if (destra or destra == 4) and not sinistra:
         return 1
     elif not destra and (sinistra or sinistra == 4):
