@@ -76,11 +76,11 @@ if __name__ == '__main__':
             direzione = assegnaDirezione(mask, MINY, CROPSTART - 10)
             # print(direzione)
             if direzione == 1:  # gira a destra
-                Sdestra(motori)
+                destra(motori)
                 print("destra")
                 sleep(0.4)
             elif direzione == 2:  # gira a sinistra
-                Ssinistra(motori)
+                sinistra(motori)
                 print("sinistra")
                 sleep(0.4)
             elif direzione == 3:  # vai dritto
